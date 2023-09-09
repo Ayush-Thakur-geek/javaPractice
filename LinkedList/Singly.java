@@ -71,14 +71,27 @@ public class Singly {
         }
         tail = temp;
         temp.next = null;
+
+        // or
+//        Node secondLast = get(size - 2);
+//        tail = secondLast;
+//        tail.next = null;
+
         if (tail == null) {
             head = null;
         }
         size--;
+
         return val;
     }
 
     public int delete(int index) {
+        if (index == 0) {
+            deleteFirst();
+        }
+        if (index == size-1) {
+            deleteLast();
+        }
         Node temp = head;
         for (int i = 1; i < index; i++) {
             temp = temp.next;
@@ -86,8 +99,23 @@ public class Singly {
         Node del = temp.next;
         int val = del.value;
         temp.next = del.next;
+
+        //or
+
+//        Node prev = get(index - 1);
+//        int val = prev.next.value;
+//        prev.next = prev.next.next;
+//
         size--;
         return val;
+    }
+
+    public Node get(int index) {
+        Node node = head;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return node;
     }
 
     public void display() {
