@@ -1,14 +1,13 @@
-package Trees.BT;
+package trees.bt;
 
 import java.util.Scanner;
 
 public class BinaryTree {
-
     public BinaryTree() {
 
     }
-    private static class Node {
-        private int value;
+    public static class Node {
+        int value;
         Node left;
         Node right;
 
@@ -16,36 +15,29 @@ public class BinaryTree {
             this.value = value;
         }
     }
+
     private Node root;
 
-    //insert elements
     public void populate(Scanner in) {
-        System.out.print("Enter the root no: ");
+        System.out.println("Enter the root Node: ");
         int value = in.nextInt();
         root = new Node(value);
         populate(in, root);
     }
-
     private void populate(Scanner in, Node node) {
-        System.out.print("Do you want to enter left of " + node.value + " (answer in y/n) : ");
-        String left = in.next().trim();
-        if (left.equals("y")) {
-            System.out.print("Enter the value of the left of  " + node.value + " : ");
+        System.out.println("Do you want to add a left child to " + node.value + "? (y/n)");
+        if (in.next().trim().equalsIgnoreCase("y")) {
+            System.out.println("Enter the value of the left child: ");
             int value = in.nextInt();
             node.left = new Node(value);
             populate(in, node.left);
-        } else if (!left.equals("n")) {
-            System.out.println("Invalid Entry!!");
         }
-        System.out.print("Do you want to enter right of " + node.value + " (answer in y/n) : ");
-        String right = in.next().trim();
-        if (right.equals("y")) {
-            System.out.print("Enter the value of the right of  " + node.value + " : ");
+        System.out.println("Do you want to add a right child to " + node.value + "? (y/n)");
+        if (in.next().trim().equalsIgnoreCase("y")) {
+            System.out.println("Enter the value of the right child: ");
             int value = in.nextInt();
             node.right = new Node(value);
             populate(in, node.right);
-        } else if (!left.equals("n")) {
-            System.out.println("Invalid Entry!!");
         }
     }
     public void display() {
@@ -69,14 +61,13 @@ public class BinaryTree {
         }
         prettyDisplay(node.right, level + 1);
         if (level != 0) {
-            for (int i = 0; i < level-1; i++) {
+            for (int i = 0; i < level - 1; i++) {
                 System.out.print("|\t\t");
             }
-            System.out.println("|---->" + node.value);
+            System.out.println("|----->" + node.value);
         } else {
             System.out.println(node.value);
         }
-
         prettyDisplay(node.left, level + 1);
     }
 
@@ -86,9 +77,8 @@ public class BinaryTree {
     private void preOrder(Node node) {
         if (node == null) {
             return;
-        } else {
-            System.out.print(node.value + " ");
         }
+        System.out.println(node.value);
         preOrder(node.left);
         preOrder(node.right);
     }
@@ -101,7 +91,7 @@ public class BinaryTree {
             return;
         }
         inOrder(node.left);
-        System.out.print(node.value + " ");
+        System.out.println(node.value);
         inOrder(node.right);
     }
 
@@ -114,6 +104,6 @@ public class BinaryTree {
         }
         postOrder(node.left);
         postOrder(node.right);
-        System.out.print(node.value + " ");
+        System.out.println(node.value);
     }
 }

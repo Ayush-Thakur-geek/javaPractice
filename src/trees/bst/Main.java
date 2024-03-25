@@ -1,6 +1,4 @@
-package Trees.BST;
-
-import java.util.Arrays;
+package trees.bst;
 
 public class Main {
     public static void main(String[] args) {

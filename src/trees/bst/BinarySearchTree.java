@@ -1,4 +1,4 @@
-package Trees.BST;
+package trees.bst;
 
 public class BinarySearchTree {
 
@@ -19,11 +19,15 @@ public class BinarySearchTree {
 
     private Node root;
 
-//    public BinarySearchTree() {
-//
-//    }
+    public BinarySearchTree() {
 
-    public int height(Node node) {
+    }
+
+    public int height() {
+        return height(root);
+    }
+
+    private int height(Node node) {
         if(node == null) {
             return -1;
         }
